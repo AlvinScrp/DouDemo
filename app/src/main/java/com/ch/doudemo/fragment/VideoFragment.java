@@ -2,10 +2,11 @@ package com.ch.doudemo.fragment;
 
 import android.app.Activity;
 import android.graphics.Point;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.ViewDragHelper;
 import android.view.View;
 import android.widget.RelativeLayout;
+
+import androidx.customview.widget.ViewDragHelper;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.bumptech.glide.Glide;
 import com.ch.doudemo.R;
@@ -44,7 +45,7 @@ public class VideoFragment extends BaseFragment {
         url = getArguments().getString(URL);
         Glide.with(context)
                 .load(url)
-                .into(txvVideo.thumbImageView);
+                .into(txvVideo.posterImageView);
         txvVideo.rl_touch_help.setVisibility(View.GONE);
         txvVideo.setUp(url, url);
 

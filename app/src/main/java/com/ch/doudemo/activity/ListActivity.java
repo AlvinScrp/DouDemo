@@ -2,11 +2,12 @@ package com.ch.doudemo.activity;
 
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.ch.doudemo.R;
@@ -159,7 +160,7 @@ public class ListActivity extends AppCompatActivity {
             if (position == 0) {
                 holder.mp_video.startVideo();
             }
-            Glide.with(context).load(bean).into(holder.mp_video.thumbImageView);
+            Glide.with(context).load(bean).into(holder.mp_video.posterImageView);
             holder.tv_title.setText("第" + position + "个视频");
         }
 

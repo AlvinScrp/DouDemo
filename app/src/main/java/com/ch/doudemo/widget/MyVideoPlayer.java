@@ -41,21 +41,25 @@ public class MyVideoPlayer extends JzvdStd {
     }
 
     @Override
-    public void onAutoCompletion() {
+    public void onStateAutoComplete() {
 
-        thumbImageView.setVisibility(View.GONE);
-
-        if (screen == SCREEN_FULLSCREEN) {
-            onStateAutoComplete();
-            setUp((String) jzDataSource.getCurrentUrl(), jzDataSource.title, SCREEN_FULLSCREEN);
-        } else {
-            super.onAutoCompletion();
-            setUp((String) jzDataSource.getCurrentUrl(), jzDataSource.title, SCREEN_NORMAL);
-        }
-        //循环播放
-        startVideo();
+//        thumbImageView.setVisibility(View.GONE);
+//
+//        if (screen == SCREEN_FULLSCREEN) {
+//            onStateAutoComplete();
+//            setUp((String) jzDataSource.getCurrentUrl(), jzDataSource.title, SCREEN_FULLSCREEN);
+//        } else {
+//            super.onAutoCompletion();
+//            setUp((String) jzDataSource.getCurrentUrl(), jzDataSource.title, SCREEN_NORMAL);
+//        }
+//        //循环播放
+//        startVideo();
     }
 
+    @Override
+    public void setAllControlsVisiblity(int topCon, int bottomCon, int startBtn, int loadingPro, int thumbImg, int bottomPro, int retryLayout) {
+        super.setAllControlsVisiblity(topCon, bottomCon, startBtn, loadingPro, thumbImg, bottomPro, retryLayout);
+    }
 
     @Override
     public void setUp(String url, String title, int screen) {
@@ -70,77 +74,86 @@ public class MyVideoPlayer extends JzvdStd {
 
     }
 
-    @Override
-    public void init(final Context context) {
-        super.init(context);
-
-        rl_touch_help = findViewById(R.id.rl_touch_help);
-        ll_start = findViewById(R.id.ll_start);
-        iv_start = findViewById(R.id.iv_start);
-        resetPlayView();
-
-        rl_touch_help.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resetPlayView();
-                if (isPlay()) {
-                    fullscreenButton.performClick();
-                }
-
-            }
-        });
-
-        ll_start.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isPlay()) {
-                    goOnPlayOnPause();
-                } else {
-                    //暂停
-                    if (state == STATE_PAUSE) {
-                        goOnPlayOnResume();
-                    } else {
-                        startVideo();
-                    }
-                }
-                resetPlayView();
-            }
-        });
-    }
-
-    @Override
-    public void startVideo() {
-        if (screen == SCREEN_FULLSCREEN) {
-            startFullscreenDirectly(context, MyVideoPlayer.class, jzDataSource);
-            onStatePreparing();
-            ll_start.setVisibility(VISIBLE);
-        } else {
-            super.startVideo();
-            ll_start.setVisibility(GONE);
-        }
-        resetPlayView();
-    }
-
-
-    private void resetPlayView() {
-        if (isPlay()) {
-            iv_start.setBackgroundResource(R.mipmap.video_play_parse);
-        } else {
-            iv_start.setBackgroundResource(R.mipmap.stop);
-        }
-    }
-
-    /**
-     * 是否播放
-     *
-     * @return
-     */
-    private boolean isPlay() {
-        if (state == STATE_PREPARING || state == STATE_PLAYING || state == -1) {
-            return true;
-        }
-
-        return false;
-    }
+//    @Override
+//    public void init(final Context context) {
+//        super.init(context);
+//
+//        rl_touch_help = findViewById(R.id.rl_touch_help);
+//        ll_start = findViewById(R.id.ll_start);
+//        iv_start = findViewById(R.id.iv_start);
+//        resetPlayView();
+//
+//        rl_touch_help.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                if (isPlay()) {
+////                    fullscreenButton.performClick();
+//                    goOnPlayOnPause();
+//                }else {
+//                    //暂停
+//                    if (state == STATE_PAUSE) {
+//                        goOnPlayOnResume();
+//                    } else {
+//                        startVideo();
+//                    }
+//                }
+//                resetPlayView();
+//
+//            }
+//        });
+//
+//        ll_start.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (isPlay()) {
+//                    goOnPlayOnPause();
+//                } else {
+//                    //暂停
+//                    if (state == STATE_PAUSE) {
+//                        goOnPlayOnResume();
+//                    } else {
+//                        startVideo();
+//                    }
+//                }
+//                resetPlayView();
+//            }
+//        });
+//    }
+//
+//    @Override
+//    public void startVideo() {
+//        if (screen == SCREEN_FULLSCREEN) {
+//            startFullscreenDirectly(context, MyVideoPlayer.class, jzDataSource);
+//            onStatePreparing();
+//            ll_start.setVisibility(VISIBLE);
+//        } else {
+//            super.startVideo();
+//            ll_start.setVisibility(GONE);
+//        }
+//        resetPlayView();
+//    }
+//
+//
+//    private void resetPlayView() {
+//        if (isPlay()) {
+//            iv_start.setBackgroundResource(R.mipmap.video_play_parse);
+//        } else {
+//            iv_start.setBackgroundResource(R.mipmap.stop);
+//        }
+//    }
+//
+//    /**
+//     * 是否播放
+//     *
+//     * @return
+//     */
+//    private boolean isPlay() {
+//        if (state == STATE_PREPARING || state == STATE_PLAYING || state == -1) {
+//            return true;
+//        }
+//
+//        return false;
+//    }
 
 }
