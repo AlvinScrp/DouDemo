@@ -20,10 +20,6 @@ public class MainActivity extends AppCompatActivity {
     Button btnPage;
     @BindView(R.id.btn_list)
     Button btnList;
-    @BindView(R.id.btn_record)
-    Button btnList2;
-    @BindView(R.id.btn_record2)
-    Button btnRecord2;
     @BindView(R.id.btn_page2)
     Button btnPage2;
 
@@ -46,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @OnClick({R.id.btn_page, R.id.btn_list, R.id.btn_record, R.id.btn_record2, R.id.btn_page2})
+    @OnClick({R.id.btn_page, R.id.btn_list, R.id.btn_page2})
     public void onViewClicked(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
@@ -55,13 +51,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_list:
                 intent.setClass(MainActivity.this, ListActivity.class);
-                break;
-            case R.id.btn_record:
-                intent.setClass(MainActivity.this, RecordActivity.class);
-                break;
-
-            case R.id.btn_record2:
-                intent.setClass(MainActivity.this, Record2Activity.class);
                 break;
 
             case R.id.btn_page2:
